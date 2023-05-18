@@ -1,4 +1,5 @@
 <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +15,8 @@
     <body>
         <div class="vh-100 d-flex justify-content-center align-items-center ">
             <div class="col-md-5 p-5 shadow-sm border rounded-5 border-primary bg-white">
-                <h2 class="text-center mb-4 text-primary">Login Form</h2>
-                <form action="script/login_db.php?status=0" method="post">
+                <h2 class="text-center mb-4 text-primary">Register Here</h2>
+                <form action="script/login_db.php?status=1" method="post">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="text" name="Username" class="form-control border border-primary" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -24,9 +25,9 @@
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" name="Password" class="form-control border border-primary" id="exampleInputPassword1">
                     </div>
-                    <p class="small"><a class="text-primary" href="register.php">Create new account?</a></p>
+                    <p class="small"><a class="text-primary" href="index.php">Login Here?</a></p>
                     <div class="d-grid">
-                        <button class="btn btn-primary" type="submit">Login</button>
+                        <button class="btn btn-primary" type="submit">Register</button>
                     </div>
                 </form>
                 <div class="mt-3">
