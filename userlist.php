@@ -83,6 +83,12 @@ if(isset($_GET['msg']))
                                         </span>
                                         <span>Create</span>
                                     </a>
+                                    <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1"  data-bs-toggle="modal" data-bs-target="#addmodalsqli">
+                                        <span class=" pe-2">
+                                            <i class="bi bi-plus"></i>
+                                        </span>
+                                        <span>Create SQLI</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -175,6 +181,10 @@ if(isset($_GET['msg']))
             dropdownParent: $('#addmodal')
         });
 
+        $("#userroleidaddsqli").select2({
+            dropdownParent: $('#addmodalsqli')
+        });
+
     });
 
     $(document).on('click','.edit',function()
@@ -258,6 +268,57 @@ if(isset($_GET['msg']))
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary" form="edituser">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-----------------------------------------------------------end---------------------------------------------->
+
+
+<!----------------------------------------------------Add user modal SQLI------------------------------------------>
+<div class="modal fade" id="addmodalsqli" tabindex="-1" aria-labelledby="addmodalsqliLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addmodalsqliLabel">Add User SQLI</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="script/add_user_sqli.php?status=1" method="post" id="addusersqli">
+            <div>
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" name="Username" class="form-control border border-primary" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off" required>
+            </div>
+            <div>
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="Password" class="form-control border border-primary" id="exampleInputPassword1" autocomplete="off" required>
+            </div> 
+            <div>
+                <label for="exampleInputLocation1" class="form-label">Location</label>
+                <input type="text" name="location" class="form-control border border-primary" id="exampleInputLocation1" autocomplete="off" required>
+            </div> 
+            <div>
+                <label for="exampleInputPassword1" class="form-label">Role</label><br/>
+                <select class="form-select form-control border border-primary" name="userroleid[]" id="userroleidaddsqli" multiple style="width: 100%;" required>
+                    <option value="">Select Roles</option>
+                    <?php
+                        $sql = "select * from role order by Role asc";
+                        if($stmt->prepare($sql))
+                        {
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            while ($row = $result->fetch_assoc())
+                            {  
+                    ?>
+                    <option value="<?php echo $row['RoleID'] ?>"><?php echo $row['Role']; ?></option>
+                    <?php } } ?>
+                </select>
+            </div>                
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" form="addusersqli">Save changes</button>
       </div>
     </div>
   </div>
